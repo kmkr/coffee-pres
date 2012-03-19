@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 
   var updateHead = function(target) {
-    var txt = "Backbone med Coffee";
+    var txt = "CoffeeScript";
     var h;
     if ((h = $(target).find('.slideHead')) && h.length > 0) {
       txt += " - " + h.text();
