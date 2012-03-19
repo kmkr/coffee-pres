@@ -1,0 +1,238 @@
+<html>
+<head>
+<title>Backbone med Coffee</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <script type='text/javascript' src='js/jquery-1.7.1.min.js'> </script>
+  <script type='text/javascript' src="js/prettify/prettify.js"></script>
+  <script type='text/javascript' src="js/slides.js"></script>
+  <script type='text/javascript' src="js/custom.js"></script>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/prettify.css" />
+  <link href='http://fonts.googleapis.com/css?family=Port+Lligat+Slab' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<hint>Coffeescript</hint>
+
+<section class='slide' id='slide1'>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<span>Coffeescript</span>
+</section>
+
+<section class='slide' id='slide2'>
+  <span class='slideHead'>Agenda</span><br/>
+  <span class='content'>
+    <ol class="agenda">
+      <li>Grunnleggende coffee</li>
+    </ol>
+    <div class='demo_explainer'>
+      kris-mikael.krister@iteraconsulting.no
+    </div>
+  </span>
+</section>
+
+<section class='slide' id='slide6'>
+  <span class='slideHead'>Grunnleggende Coffee</span><br/>
+  <span class='content'>
+    <ul>
+      <li>Språk som kompilerer til JavaScript (på server eller klient)</li>
+    </ul>
+    <span class="span50 box happy">
+      <span class="label">Fordeler</span>
+      <p>Øker lesbarhet</p>
+      <p>Oppmuntrer til å bruke best-practice JavaScript-patterns</p>
+      <p>Hjelper til å unngå JavaScripts svakheter</p>
+    </span>
+    <span class="span50 box angry">
+      <span class="label">Ulemper</span>
+      <p>Må kompileres</p>
+      <p>Debugging kan være vanskeligere</p>
+      <p>(Mye) mindre kjent enn JavaScript</p>
+      <p>Fremtid?</p>
+    </span>
+  </span>
+</section>
+
+<section class='slide' id='slide7'>
+  <span class='slideHead'>Grunnleggende Coffee</span><br/>
+  <div class='content'>
+
+    <div class="coffee box span50">
+      <span class="label">Coffee</span>
+      <pre class="span50 prettyprint lang-javascript">
+# Assignment:
+number   = 42
+opposite = true
+
+# Conditions:
+number = -42 if opposite
+
+# Functions:
+square = (x) -&gt; x * x
+
+
+# Arrays:
+list = [1, 2, 3, 4, 5]
+
+# Objects:
+math =
+  root:   Math.sqrt
+  square: square
+  cube:   (x) -&gt; x * square x
+
+# this
+-&gt; @
+
+
+
+# loops
+if @studyingEconomics
+  buy()  while supply &gt; demand
+  sell() until supply &gt; demand
+      </pre>
+    </div>
+
+    <div class="js box span50">
+      <span class="label">JS</span>
+      <pre class="span50 prettyprint">
+var cubes, list, math, num, number, opposite,
+  square;
+
+number = 42;
+opposite = true;
+
+if (opposite) number = -42;
+
+square = function(x) {
+  return x * x;
+};
+
+list = [1, 2, 3, 4, 5];
+
+math = {
+  root: Math.sqrt,
+  square: square,
+  cube: function(x) {
+    return x * square(x);
+  }
+};
+
+function() {
+  return this;
+}
+
+if (this.studyingEconomics) {
+  while (supply &gt; demand) {
+    buy();
+  }
+  while (!(supply &gt; demand)) {
+    sell();
+  }
+}
+      </pre>
+    </div>
+
+  </div>
+</section>
+
+<section class='slide' id='slide8'>
+  <span class='slideHead'>Grunnleggende Coffee</span><br/>
+  <div class='content'>
+
+    <div class="coffee box span50">
+      <span class="label">Coffee</span>
+      <pre class="span50 prettyprint lang-javascript">
+# Array slicing/splicing
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+copy    = numbers[0...numbers.length]
+
+middle  = copy[3..6]
+
+# Operators og aliases
+launch() if ignition is on
+
+volume = 10 if band isnt SpinalTap
+
+letTheWildRumpusBegin() unless answer is no
+
+if car.speed &lt; limit then accelerate()
+
+winner = yes if pick in [47, 92, 13]
+
+print inspect "My name is #{@name}"
+      </pre>
+    </div>
+
+    <div class="js box span50">
+      <span class="label">JS</span>
+      <pre class="span50 prettyprint">
+var copy, middle, numbers;
+
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+copy = numbers.slice(0, numbers.length);
+
+middle = copy.slice(3, 7);
+
+var volume, winner;
+
+if (ignition === true) launch();
+
+if (band !== SpinalTap) volume = 10;
+
+if (answer !== false) letTheWildRumpusBegin();
+
+if (car.speed &lt; limit) accelerate();
+
+if (pick === 47 ||
+  pick === 92 ||
+  pick === 13) winner = true;
+
+print(inspect("My name is " + this.name));
+      </pre>
+    </div>
+
+  </div>
+</section>
+
+<section class='slide' id='slide8'>
+  <span class='slideHead'>Grunnleggende Coffee - Fat arrow</span><br/>
+  <div class='content'>
+
+    <div class="coffee box">
+      <span class="label">Coffee</span>
+      <pre class="prettyprint lang-javascript">
+      =&gt;
+      </pre>
+    </div>
+
+  </div>
+</section>
+
+<section class='slide' id='slide8'>
+  <span class='slideHead'>Installasjon</span><br/>
+  <div class='content'>
+
+    <ul>
+      <li>Installer node.js <a href="http://nodejs.org/">http://nodejs.org/</a></li>
+      <li>Installer npm <a href="http://npmjs.org/">http://npmjs.org/</a></li>
+      <li>Installer coffee <code>npm install -g coffee-script</code></li>
+    </ul>
+
+  </div>
+</section>
+
+<section class='slide' id="slide14">
+  <span class='slideHead'>Ressurser</span><br/>
+  <div class='content'>
+
+    <table class="resources">
+      <tr><td>Dokumentasjon og download:</td><td><a href="http://documentcloud.github.com/backbone/">http://documentcloud.github.com/backbone/</a></td></tr>
+    </table>
+
+  </div>
+</section>
+
+</body>
+</html>

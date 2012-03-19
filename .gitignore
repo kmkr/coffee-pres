@@ -1,0 +1,3 @@
+bb/js/*/*.js
+bb/js/bootstrap.js
+!bb/js/libs/*.js
